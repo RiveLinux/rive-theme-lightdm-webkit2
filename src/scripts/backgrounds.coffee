@@ -14,7 +14,7 @@ module.exports = class App.Backgrounds extends Spine.Controller
 
   find_items: ->
     for path in @paths
-      for file in greeter_util.dirlist(path)
+      for file in theme_utils.dirlist(path)
         @items.push(new App.Background(path: file))
 
   update_background: ->
