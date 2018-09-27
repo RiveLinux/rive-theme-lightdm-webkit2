@@ -2,7 +2,7 @@
 pkgname=rive-theme-lightdm-webkit2
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="LightDM theme"
+pkgdesc="LightDM desktop manager theme"
 arch=("any")
 url="https://github.com/RiveLinux/$pkgname"
 license=("MIT")
@@ -13,6 +13,8 @@ makedepends=(
 )
 depends=(
   "lightdm-webkit2-greeter"
+  "rive-artwork-backgrounds"
+  "rive-artwork-branding"
 )
 source=("$pkgname-$pkgver.tar.gz")
 sha512sums=("")
