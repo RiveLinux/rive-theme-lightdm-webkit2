@@ -5,6 +5,11 @@
     * Theme is rive
   * /etc/lightdm/lightdm.conf
     * greeter-session is lightdm-webkit2-greeter
+* app.coffee
+  * Each module should have an execute function so funcitonality doesn't occur in initialize
+* Menu scrolling
+  * Languages menu can be quite long
+* Show current menu item in tooltip
 * Options
   * Toggle blurred backgrounds
     `display: none` for blurred `.bg` elements ()
