@@ -1,0 +1,167 @@
+// Theming
+$light:    rgba(255, 255, 255, 0.9);
+$lighter:  rgba(255, 255, 255, 0.75);
+$lightest: rgba(255, 255, 255, 0.5);
+$dark:     rgba(0, 0, 0, 0.75);
+$darker:   rgba(0, 0, 0, 0.9);
+
+$white: $light;
+$black: $dark;
+
+// Fonts
+$font-size-sm: 1rem;
+
+// Links
+$link-color:            $light;
+$link-hover-decoration: none;
+
+// Border
+$border-color:  $lightest;
+$border-width:  0;
+$border-radius: .2rem;
+
+// Dropdown
+$dropdown-bg:               $darker;
+$dropdown-border-color:     $lightest;
+$dropdown-link-color:       $light;
+$dropdown-link-hover-color: $lighter;
+$dropdown-link-hover-bg:    $darker;
+
+// Tooltips
+$tooltip-color:        $light;
+$tooltip-bg:           $darker;
+$tooltip-arrow-height: 0;
+//$tooltip-arrow-width:  2rem;
+//$tooltip-arrow-height: .2rem;
+
+// Input
+$input-border-color:       $lightest;
+$input-focus-color:        $light;
+$input-focus-border-color: $lightest;
+$input-btn-focus-color:    $lightest;
+$input-btn-focus-width:    1px;
+
+$input-color:      $light;
+$input-bg:         $dark;
+$input-box-shadow: none;
+
+// Others
+$component-active-bg:    $dark;
+$component-active-color: $light;
+
+$body-bg:    $dark;
+$body-color: $light;
+
+$font-family-sans-serif: Rive Pixel;
+$font-family-monospace:  Rive Pixel;
+
+
+@import "~bootstrap/scss/bootstrap";
+
+// Variables
+$default_bg: "/usr/share/backgrounds/rive/Camaleno-Spain-by-Mathew-MacQuarrie.png";
+//$default_bg: "../images/backgrounds/Forest.jpg";
+
+// Bootstrap overrides
+.btn-dark:focus { box-shadow: 0 0 0 1px $lightest; }
+
+// Utilities
+.blurrable {
+  opacity:             1;
+  filter:              none;
+  transition:          ease-out;
+  transition-duration: 300ms;
+  transition-property: filter, opacity;
+}
+
+.blurred {
+  opacity: 0 !important;
+  filter:  blur(20px) !important;
+}
+
+// For absolutely positioning child elements within a 'relative' parent
+.absolute-child {
+  position: absolute;
+  left:     0px;
+  right:    0px;
+  top:      0px;
+  bottom:   0px;
+}
+
+// Style
+html, body { height: 100%; }
+
+body {
+  background-image:    url($default_bg);
+  background-position: center;
+  //font-family:         ypn envypn;
+}
+
+#username, #password { @extend .form-control; }
+#login               { @extend .btn, .btn-dark, .btn-block, .mb-2; }
+#options             { @extend .mb-0; }
+#options button      { @extend .btn, .btn-link, .dropdown-toggle }
+
+#logo {
+  @extend .mb-3, .mx-auto;
+
+  background:    rgba(0, 0, 0, 0.6);
+  position:      relative;
+  width:         120px;
+  height:        120px;
+  border-radius: $border-radius;
+  top:           -150px;
+
+  img {
+    @extend .absolute-child;
+
+    top:    10px;
+    left:   10px;
+    width:  100px;
+    height: 100px;
+
+    mix-blend-mode: lighten;
+
+    -webkit-user-select: none;
+    -khtml-user-select:  none;
+    -moz-user-select:    none;
+    -o-user-select:      none;
+    user-select:         none;
+    pointer-events:      none;
+  }
+}
+
+#login_form {
+  @extend .absolute-child, .blurrable;
+
+  form {
+    @extend .p-3;
+
+    background:    $dark;
+    border-radius: $border-radius;
+  }
+}
+
+main {
+  @extend .absolute-child, .m-auto;
+
+  margin:     auto;
+  width:      300px;
+  height:     225px;
+  text-align: center;
+
+  img.icon {
+    opacity:       0.95;
+    margin-bottom: 5em;
+  }
+
+  .bg {
+    @extend .absolute-child;
+
+    margin:              auto;
+    background-image:    url($default_bg);
+    filter:              blur(2px);
+    z-index:             -1;
+    background-position: 50%;
+  }
+}

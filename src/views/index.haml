@@ -1,0 +1,52 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport"    content="width=device-width, initial-scale=1.0")
+    %meta(name="description" content="Theme: Rive")
+    %meta(name="author"      content="Ryan Scott Lewis")
+    %title Rive LightDM Webkit2 Theme
+
+    %link(rel="stylesheet" type="text/css" href="styles/app.css")
+
+  %body
+    %main
+      #logo
+        .bg
+        %img(src="/usr/share/pixmaps/rive/logo-red.png"   draggable="false" data-channel="red")
+        %img(src="/usr/share/pixmaps/rive/logo-green.png" draggable="false" data-channel="green")
+        %img(src="/usr/share/pixmaps/rive/logo-blue.png"  draggable="false" data-channel="blue")
+      #login_form.blurred
+        .bg
+        %form
+          .form-group
+            %input#username(type="text" placeholder="Username" required="true" autofocus="true" aria-label="Username text input")
+          .form-group
+            .input-group
+              %input#password(type="password" placeholder="Password" required="true" aria-label="Password text input with window manager selection dropdown")
+          .form-group
+            %button#login(type="submit") Login
+          .form-group#options
+            .btn-group(role="group")
+              .btn-group#layouts
+                %button(type="button" data-toggle="dropdown" data-placement="top" title="Keyboard Layout" aria-label="Language selection dropdown" aria-haspopup="true" aria-expanded="false")
+                  %i.fa.fa-keyboard
+                .dropdown-menu(aria-labelledby="language")
+              .btn-group#languages
+                %button(type="button" data-toggle="dropdown" data-placement="top" title="Language" aria-label="Keyboard layout selection dropdown" aria-haspopup="true" aria-expanded="false")
+                  %i.fa.fa-language
+                .dropdown-menu(aria-labelledby="layout")
+              .btn-group#sessions
+                %button(type="button" data-toggle="dropdown" data-placement="top" title="Window Manager" aria-label="Window manager selection dropdown" aria-haspopup="true" aria-expanded="false")
+                  %i.fa.fa-desktop
+                .dropdown-menu(aria-labelledby="session")
+              .btn-group#backgrounds
+                %button(type="button" data-toggle="dropdown" data-placement="top" title="Background" aria-label="Background image selection dropdown" aria-haspopup="true" aria-expanded="false")
+                  %i.fa.fa-image
+                .dropdown-menu(aria-labelledby="background")
+
+    -# TODO: Power and suspend options, messagebox/feedback, auth
+
+    %script(type="text/javascript" src="/usr/share/lightdm-webkit/themes/_vendor/js/mock.js")/
+    %script(type="text/javascript" src="scripts/app.js")/
+

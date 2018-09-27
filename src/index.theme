@@ -1,0 +1,7 @@
+[theme]
+name=Rive
+description=Rive Theme
+engine=lightdm-webkit2-greeter
+url=index.html
+session=i3
+

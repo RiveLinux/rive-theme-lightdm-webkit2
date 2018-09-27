@@ -1,0 +1,151 @@
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+@import "~bootstrap/scss/bootstrap";
+
+// TEMP VARS
+$bg: "/usr/share/backgrounds/rive/Camaleno-Spain-by-Mathew-MacQuarrie.png";
+
+// Bootstrap overrides
+.btn {
+  text-transform: none;
+
+  &:focus {
+    box-shadow: none;
+    color:      white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+.btn-default        { color: white; }
+//.btn .caret         { margin-left: 5px; }
+.btn, .form-control {
+  color:         $gray-200;
+  background:    rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  border:        none;
+  font-size:     1em;
+}
+.form-control:focus {
+  color:      white;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+
+  &::placeholder { color: $gray-900; }
+}
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius:    2px;
+
+  & > li > a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Utilities
+.blurrable {
+  opacity:             1;
+  filter:              none;
+  transition:          ease-out;
+  transition-duration: 300ms;
+  transition-property: filter, opacity;
+}
+
+.blurred {
+  opacity: 0 !important;
+  filter:  blur(20px) !important;
+}
+
+// For absolutely positioning child elements within a 'relative' parent
+.absolute-child {
+  position: absolute;
+  left:     0px;
+  right:    0px;
+  top:      0px;
+  bottom:   0px;
+}
+
+// Style
+html, body { height: 100%; }
+
+body {
+  background-image:    url($bg);
+  background-position: center;
+  font-family:         ypn envypn;
+}
+
+main {
+  @extend .absolute-child;
+
+  margin:     auto;
+  width:      300px;
+  //height:     120px;
+  //height:     300px;
+  text-align: center;
+
+  img.icon {
+    opacity:       0.95;
+    margin-bottom: 5em;
+  }
+
+  .bg {
+    @extend .absolute-child;
+
+    margin:           auto;
+    background-image: url($bg);
+    filter:           blur(2px);
+    z-index:          -1;
+  }
+
+  #logo {
+    @extend .p-3, .mb-3, .mx-auto;
+
+    background:    rgba(0, 0, 0, 0.6);
+    position:      relative;
+    width:         120px;
+    height:        120px;
+    border-radius: 5px;
+
+    .bg { background-position: 50% calc(50% - 60px); }
+
+    img {
+      @extend .absolute-child;
+      top:  10px;
+      left: 10px;
+
+      width:          100px;
+      height:         100px;
+      mix-blend-mode: lighten;
+
+      -webkit-user-select: none;
+      -khtml-user-select:  none;
+      -moz-user-select:    none;
+      -o-user-select:      none;
+      user-select:         none;
+      pointer-events:      none;
+    }
+  }
+
+  #login_form {
+    @extend .blurrable;
+
+    position: relative;
+    width:    300px;
+    //height:   160px;
+
+    & > * { border-radius: 5px; }
+
+    .bg { background-position: 50% calc(50% - 70px); }
+
+    form {
+      @extend .p-3;
+
+      background-color: rgba(0, 0, 0, 0.6);
+
+      .input-group { @extend .mb-2; }
+
+      #login {
+        @extend .mb-2;
+      }
+    }
+  }
+
+}
