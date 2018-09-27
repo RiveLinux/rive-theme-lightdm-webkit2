@@ -10,7 +10,7 @@ module.exports = class App.Logo extends Spine.Controller
 
     @position ||= new App.Vector(x: 10, y: 10)
 
-    @channels = [
+    @channels = [ # TODO: Should be injected?
       new App.LogoChannel(parent: @, channel: "red"),
       new App.LogoChannel(parent: @, channel: "green"),
       new App.LogoChannel(parent: @, channel: "blue")
