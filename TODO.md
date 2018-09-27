@@ -1,5 +1,10 @@
 # TODO
 
+* Configs
+  * /etc/lightdm/lightdm-webkit2-greeter.conf
+    * Theme is rive
+  * /etc/lightdm/lightdm.conf
+    * greeter-session is lightdm-webkit2-greeter
 * Options
   * Toggle blurred backgrounds
     `display: none` for blurred `.bg` elements ()
