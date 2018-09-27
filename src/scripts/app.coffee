@@ -15,15 +15,6 @@ fa.library.add(faLanguage, faKeyboard, faDesktop, faImage)
 #require('spine/lib/route.js')
 #require('spine/lib/local.js')
 
-# TODO: Better! Use dir globbing.
-#theme_utils.dirlist = (directory) ->
-  #[
-    #'/usr/share/backgrounds/rive/Camaleno-Spain-by-Mathew-MacQuarrie.png',
-    #'/usr/share/backgrounds/rive/Chowan-River-Tree-by-Ryan-Scott-Lewis.png',
-    #'/usr/share/backgrounds/rive/Extra-EA300L-by-Erik-Astrom.png',
-    #'/usr/share/backgrounds/rive/Thatcher-Park-by-Natale-Anne-Gwinn.png',
-  #]
-
 module.exports = global.App = class App extends Spine.Controller
 
   fps: 60
@@ -32,11 +23,7 @@ module.exports = global.App = class App extends Spine.Controller
     super(arguments...)
 
     @callbacks   = new App.Callbacks(app: @)
-    @backgrounds = new App.Backgrounds(app: @, paths: [
-      #"/usr/share/backgrounds/rive", # TODO
-      greeter_config.branding.background_images
-    ])
-
+    @backgrounds = new App.Backgrounds(app: @)
     @logo        = new App.Logo(app: @, el: @$("#logo"))
     @login_form  = new App.LoginForm(app: @, el: @$("#login_form"))
 
