@@ -18,6 +18,8 @@ fa.library.add(
   require('@fortawesome/fontawesome-free-solid/faImage'),
 )
 
+# TODO: Move all theme_utils/greeter_config calls to here
+
 module.exports = global.App = class App extends Spine.Controller
 
   fps: 60
