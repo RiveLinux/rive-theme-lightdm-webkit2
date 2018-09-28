@@ -1,5 +1,7 @@
 # TODO
 
+
+* Power and suspend options, messagebox/feedback, auth
 * Configs
   * /etc/lightdm/lightdm-webkit2-greeter.conf
     * Theme is rive
@@ -9,6 +11,7 @@
   * Each module should have an execute function so funcitonality doesn't occur in initialize
 * Menu scrolling
   * Languages menu can be quite long
+* Submenus for background directories?
 * Show current menu item in tooltip
 * Options
   * Toggle blurred backgrounds
