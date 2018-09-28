@@ -4,7 +4,7 @@ LightDM.MockData =
   greeter:
     hostname: 'Mock Greeter'
   branding:
-    logo: '/usr/share/pixmaps/rive/logo'
+    logo: '/usr/share/pixmaps/rive/logo-white.png'
     user_logo: '/usr/share/pixmaps/archlinux-user.svg'
     background_images: '/usr/share/backgrounds'
   languages: [
