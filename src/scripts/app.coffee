@@ -62,8 +62,7 @@ require('./backgrounds.coffee')
 require('./login_form.coffee')
 
 $ ->
-  #Spine.Route.setup()
-  #Models.Destination.fetch()
+  $('[data-toggle="tooltip"]').tooltip()
 
   window.app = new App(el: $('body'))
 
