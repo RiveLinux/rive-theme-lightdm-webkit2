@@ -11,10 +11,10 @@ include /usr/share/rive/make/clean.make
 include /usr/share/rive/make/list.make
 
 build::
-	$(WEBPACK) --progress
+	$(WEBPACK) --progress -p
 
 watch::
-	$(WEBPACK) --watch
+	$(WEBPACK) --watch -p
 
 deps::
 	yarn

@@ -1,14 +1,13 @@
 # == Setup ====================================================================
 
-CleanPlugin       = require("clean-webpack-plugin")
-ExtractTextPlugin = require("extract-text-webpack-plugin")
-CopyPlugin        = require("copy-webpack-plugin")
-Webpack           = require("webpack")
+CleanPlugin          = require("clean-webpack-plugin")
+ExtractTextPlugin    = require("extract-text-webpack-plugin")
+MiniCssExtractPlugin = require("mini-css-extract-plugin")
+CopyPlugin           = require("copy-webpack-plugin")
+Webpack              = require("webpack")
 
 Build = require("./lib/Build")
 build = new Build(".")
-
-extractCSS = new ExtractTextPlugin("styles/app.css")
 
 configs = []
 module.exports = configs
@@ -22,21 +21,21 @@ configs.push
   output: build.output
   module:
     rules: [
-      {
         test: /\.coffee$/,
         use: ['coffee-loader']
-      },
-      {
+      ,
         test: /\.scss$/,
-        use: extractCSS.extract(
-          fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
-            options: { url: false }
-          }, 'sass-loader'],
-        )
-      },
-      {
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+            }
+          },
+          "sass-loader"
+        ]
+      ,
         test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
         use: [{
           loader: 'file-loader',
@@ -44,21 +43,21 @@ configs.push
             outputPath: '/fonts/'
           }
         }]
-      },
-      {
+      ,
         test: /\.css$/,
-        use: extractCSS.extract(
-          fallback: 'style-loader',
-          use: ['css-loader']
-        )
-      }
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          "css-loader"
+        ]
     ],
   plugins: [
     new CleanPlugin(build.dirs.build.toString()),
     new CopyPlugin([
       build.dirs.src.join("index.theme").toString(),
     ]),
-    extractCSS
+    new MiniCssExtractPlugin(filename: "styles/app.css")
   ]
 
 # == Main views ===============================================================
