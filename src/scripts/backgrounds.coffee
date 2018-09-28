@@ -7,12 +7,12 @@ module.exports = class App.Backgrounds extends Spine.Controller
     @path ||= greeter_config.branding.background_images
     @all  ||= []
 
-    @find_all()
+    @find_all(@path)
 
     @current ||= @all[0]
     @update_background()
 
-  find_all: (path=@path) ->
+  find_all: (path) ->
     for entry in theme_utils.dirlist(path)
       if entry.toLowerCase().match(/(png|jpg|bmp)$/)
         @all.push(new App.Background(path: entry))
