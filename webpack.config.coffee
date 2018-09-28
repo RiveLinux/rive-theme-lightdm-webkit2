@@ -29,20 +29,11 @@ configs.push
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: {
+            options:
               url: false,
-            }
           },
           "sass-loader"
         ]
-      ,
-        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            outputPath: '/fonts/'
-          }
-        }]
       ,
         test: /\.css$/,
         use: [
