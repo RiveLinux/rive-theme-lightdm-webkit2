@@ -4,22 +4,19 @@ window.Popper      = require('popper.js')
 window.Bootstrap   = require('bootstrap')
 window.Spine       = require('spine')
 
-LightDM                 = require('./mock.coffee')
+LightDM = require('./mock.coffee')
 # Only set LightDM globals to mocks if they aren't already set
 window.lightdm        ||= new LightDM.Greeter()
 window.theme_utils    ||= new LightDM.ThemeUtils()
 window.greeter_config ||= new LightDM.GreeterConfig()
 
-fa         = require('@fortawesome/fontawesome')
-faKeyboard = require('@fortawesome/fontawesome-free-solid/faKeyboard')
-faLanguage = require('@fortawesome/fontawesome-free-solid/faLanguage')
-faDesktop  = require('@fortawesome/fontawesome-free-solid/faDesktop')
-faImage    = require('@fortawesome/fontawesome-free-solid/faImage')
-
-fa.library.add(faLanguage, faKeyboard, faDesktop, faImage)
-
-#require('spine/lib/route.js')
-#require('spine/lib/local.js')
+fa = require('@fortawesome/fontawesome')
+fa.library.add(
+  require('@fortawesome/fontawesome-free-solid/faKeyboard'),
+  require('@fortawesome/fontawesome-free-solid/faLanguage'),
+  require('@fortawesome/fontawesome-free-solid/faDesktop'),
+  require('@fortawesome/fontawesome-free-solid/faImage'),
+)
 
 module.exports = global.App = class App extends Spine.Controller
 
