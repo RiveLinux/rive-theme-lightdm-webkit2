@@ -6,9 +6,16 @@ window.Spine       = require('spine')
 
 LightDM = require('./mock.coffee')
 # Only set LightDM globals to mocks if they aren't already set
-window.lightdm        ||= new LightDM.Greeter()
-window.theme_utils    ||= new LightDM.ThemeUtils()
-window.greeter_config ||= new LightDM.GreeterConfig()
+if lightdm?
+  # TODO: See: https://github.com/Antergos/web-greeter/issues/143
+  # Should be fixed in 3.0 release
+  greeter_config.branding.background_images = greeter_config.get_str("branding", "background_images")
+  greeter_config.branding.logo              = greeter_config.get_str("branding", "logo")
+  greeter_config.branding.user_logo         = greeter_config.get_str("branding", "user_logo")
+else
+  window.lightdm        ||= new LightDM.Greeter()
+  window.theme_utils    ||= new LightDM.ThemeUtils()
+  window.greeter_config ||= new LightDM.GreeterConfig()
 
 fa = require('@fortawesome/fontawesome')
 fa.library.add(
