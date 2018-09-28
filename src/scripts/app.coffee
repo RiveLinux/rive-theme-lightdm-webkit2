@@ -1,8 +1,14 @@
-window.jQuery    = require('jquery')
-window.$         = window.jQuery
-window.Popper    = require('popper.js')
-window.Bootstrap = require('bootstrap')
-window.Spine     = require('spine')
+window.jQuery    ||= require('jquery')
+window.$         ||= window.jQuery
+window.Popper      = require('popper.js')
+window.Bootstrap   = require('bootstrap')
+window.Spine       = require('spine')
+
+LightDM                 = require('./mock.coffee')
+# Only set LightDM globals to mocks if they aren't already set
+window.lightdm        ||= new LightDM.Greeter()
+window.theme_utils    ||= new LightDM.ThemeUtils()
+window.greeter_config ||= new LightDM.GreeterConfig()
 
 fa         = require('@fortawesome/fontawesome')
 faKeyboard = require('@fortawesome/fontawesome-free-solid/faKeyboard')
