@@ -9,11 +9,12 @@ module.exports = class App.Logo extends Spine.Controller
     super(arguments...)
 
     @position ||= new App.Vector(x: 10, y: 10)
+    @path     ||= greeter_config.branding.logo || '/usr/share/pixmaps/rive/logo'
 
     @channels = [ # TODO: Should be injected?
-      new App.LogoChannel(parent: @, channel: "red"),
-      new App.LogoChannel(parent: @, channel: "green"),
-      new App.LogoChannel(parent: @, channel: "blue")
+      new App.LogoChannel(parent: @, path: @path, channel: "red"),
+      new App.LogoChannel(parent: @, path: @path, channel: "green"),
+      new App.LogoChannel(parent: @, path: @path, channel: "blue")
     ]
 
     channel.position.set(@position) for channel in @channels

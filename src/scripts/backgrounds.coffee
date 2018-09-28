@@ -4,7 +4,7 @@ module.exports = class App.Backgrounds extends Spine.Controller
   constructor: ->
     super(arguments...)
 
-    @path ||= greeter_config.branding.background_images
+    @path ||= greeter_config.branding.background_images || '/usr/share/backgrounds'
     @all  ||= []
 
     @find_all(@path)
