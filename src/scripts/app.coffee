@@ -6,16 +6,9 @@ window.Spine       = require('spine')
 
 LightDM = require('./mock.coffee')
 # Only set LightDM globals to mocks if they aren't already set
-if lightdm?
-  # TODO: See: https://github.com/Antergos/web-greeter/issues/143
-  # Should be fixed in 3.0 release
-  greeter_config.branding.background_images = greeter_config.get_str("branding", "background_images")
-  greeter_config.branding.logo              = greeter_config.get_str("branding", "logo")
-  greeter_config.branding.user_logo         = greeter_config.get_str("branding", "user_logo")
-else
-  window.lightdm        ||= new LightDM.Greeter()
-  window.theme_utils    ||= new LightDM.ThemeUtils()
-  window.greeter_config ||= new LightDM.GreeterConfig()
+window.lightdm        ||= new LightDM.Greeter()
+window.theme_utils    ||= new LightDM.ThemeUtils()
+window.greeter_config ||= new LightDM.GreeterConfig()
 
 fa = require('@fortawesome/fontawesome')
 fa.library.add(
@@ -34,9 +27,15 @@ module.exports = global.App = class App extends Spine.Controller
   constructor: ->
     super(arguments...)
 
+    # TODO: See: https://github.com/Antergos/web-greeter/issues/143
+    # Should be fixed in 3.0 release
+    background_images = greeter_config.get_str("branding", "background_images")
+    logo              = greeter_config.get_str("branding", "logo")
+    user_image        = greeter_config.get_str("branding", "user_image")
+
     @callbacks   = new App.Callbacks(app: @)
-    @backgrounds = new App.Backgrounds(app: @)
-    @logo        = new App.Logo(app: @, el: @$("#logo"))
+    @backgrounds = new App.Backgrounds(app: @, path: background_images)
+    @logo        = new App.Logo(app: @, el: @$("#logo"), path: logo)
     @login_form  = new App.LoginForm(app: @, el: @$("#login_form"))
 
     new App.DropdownList(app: @, el: @$("#layouts"),   items: lightdm.layouts,  name_key: "description")

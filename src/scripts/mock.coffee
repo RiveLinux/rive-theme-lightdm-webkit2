@@ -88,6 +88,8 @@ class LightDM.GreeterConfig
   constructor: (mock_data=LightDM.MockData) ->
     @branding = mock_data.branding
 
+  get_str: (key, subkey) ->
+    @[key][subkey]
 
 module.exports = LightDM
 

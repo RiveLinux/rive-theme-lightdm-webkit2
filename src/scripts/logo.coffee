@@ -9,9 +9,8 @@ module.exports = class App.Logo extends Spine.Controller
     super(arguments...)
 
     @position ||= new App.Vector(x: 10, y: 10)
-    @path     ||= greeter_config.branding.logo
 
-    @channels = [ # TODO: Should be injected?
+    @channels = [
       new App.LogoChannel(parent: @, path: @path, channel: "red"),
       new App.LogoChannel(parent: @, path: @path, channel: "green"),
       new App.LogoChannel(parent: @, path: @path, channel: "blue")
