@@ -1,8 +1,6 @@
 # Handles LightDM callbacks
 module.exports = class App.Callbacks
-  constructor: (app) ->
-    @app = app
-
+  constructor: () ->
     window.show_prompt             = @show_prompt
     window.show_message            = @show_message
     #window.start_authentication    = @start_authentication
