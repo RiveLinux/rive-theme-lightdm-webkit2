@@ -22,8 +22,6 @@ fa.library.add(
 
 module.exports = global.App = class App extends Spine.Controller
 
-  fps: 60
-
   constructor: ->
     super(arguments...)
 
@@ -31,40 +29,28 @@ module.exports = global.App = class App extends Spine.Controller
     # Should be fixed in 3.0 release
     background_images = greeter_config.get_str("branding", "background_images")
     logo              = greeter_config.get_str("branding", "logo")
-    user_image        = greeter_config.get_str("branding", "user_image")
+    user_image        = greeter_config.get_str("branding", "user_image") # TODO: Unused
 
-    @callbacks   = new App.Callbacks(app: @)
-    @backgrounds = new App.Backgrounds(app: @, path: background_images)
-    @logo        = new App.Logo(app: @, el: @$("#logo"), path: logo)
-    @login_form  = new App.LoginForm(app: @, el: @$("#login_form"))
+    @backgrounds = new App.Backgrounds(app: @, path: background_images, find: theme_utils.dirlist)
+    @logo        = new App.Logo(el: @$("#logo"), path: logo)
 
-    new App.DropdownList(app: @, el: @$("#layouts"),   items: lightdm.layouts,  name_key: "description")
-    new App.DropdownList(app: @, el: @$("#languages"), items: lightdm.languages)
-    new App.DropdownList(app: @, el: @$("#sessions"),  items: lightdm.sessions)
-    new App.DropdownBackground(@)
-
-    @interval(1000 / @fps, @update)
-
-  interval: (duration, callback) -> setInterval(callback, duration)
-
-  timeout: (duration, callback) -> setTimeout(callback, duration)
-
-  update: => @logo.update()
+    new App.Callbacks()
+    new App.LoginForm(el: @$("#login_form"), callback: => lightdm.authenticate())
+    new App.DropdownList(el: @$("#layouts"), items: lightdm.layouts,  name_key: "description")
+    new App.DropdownList(el: @$("#languages"), items: lightdm.languages)
+    new App.DropdownList(el: @$("#sessions"), items: lightdm.sessions)
+    new App.DropdownList(el: @$("#backgrounds"), items: @backgrounds.all, callback: (background) => @backgrounds.update(background))
+    new App.Timer(callback: => @logo.update())
 
 require('./callbacks.coffee')
-
 require('./vector.coffee')
-
 require('./logo.coffee')
 require('./logo_channel.coffee')
-
 require('./dropdown_list.coffee')
-require('./dropdown_background.coffee')
-
 require('./background.coffee')
 require('./backgrounds.coffee')
-
 require('./login_form.coffee')
+require('./timer.coffee')
 
 $ ->
   $('[data-toggle="tooltip"]').tooltip()
