@@ -36,11 +36,11 @@ module.exports = global.App = class App extends Spine.Controller
 
     new App.Callbacks()
     new App.LoginForm(el: @$("#login_form"), callback: => lightdm.authenticate())
-    new App.DropdownList(el: @$("#layouts"), items: lightdm.layouts,  name_key: "description")
-    new App.DropdownList(el: @$("#languages"), items: lightdm.languages)
-    new App.DropdownList(el: @$("#sessions"), items: lightdm.sessions)
-    new App.DropdownList(el: @$("#backgrounds"), items: @backgrounds.all, callback: (background) => @backgrounds.update(background))
     new App.Timer(callback: => @logo.update())
+    new App.DropdownList(el: @$("#layouts"),     items: lightdm.layouts,  name_key: "description")
+    new App.DropdownList(el: @$("#languages"),   items: lightdm.languages)
+    new App.DropdownList(el: @$("#sessions"),    items: lightdm.sessions)
+    new App.DropdownList(el: @$("#backgrounds"), items: @backgrounds.all, callback: (background) => @backgrounds.update(background))
 
 require('./callbacks.coffee')
 require('./vector.coffee')
