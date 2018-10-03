@@ -1,4 +1,4 @@
-# `items` option is required, assumes each item has a `name`
+# `items` option is required, assumes each item has a `name` (or whatever is configured for `name_key`)
 module.exports = class App.DropdownList extends Spine.Controller
 
   elements:
