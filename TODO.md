@@ -1,6 +1,9 @@
 # TODO
 
-
+* Use HTML within logo tooltop for newline instead of comma within the copy
+* It seems the version of webkit within webkit2gtk does not support `mix-blend-mode` CSS rule
+  * Possible workaround is throw another layer on top of the RGB layers. It wont look as nice but
+    it should be a similar effect
 * Power and suspend options, messagebox/feedback, auth
 * Configs
   * /etc/lightdm/lightdm-webkit2-greeter.conf
