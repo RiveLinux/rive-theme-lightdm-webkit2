@@ -13,7 +13,8 @@ module.exports = class App.Logo extends Spine.Controller
     @channels = [
       new App.LogoChannel(parent: @, path: @path, channel: "red"),
       new App.LogoChannel(parent: @, path: @path, channel: "green"),
-      new App.LogoChannel(parent: @, path: @path, channel: "blue")
+      new App.LogoChannel(parent: @, path: @path, channel: "blue"),
+      new App.LogoChannel(parent: @, path: @path, channel: "white"),
     ]
 
     channel.position.set(@position) for channel in @channels
