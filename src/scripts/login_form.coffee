@@ -13,7 +13,6 @@ module.exports = class App.LoginForm extends Spine.Controller
   constructor: ->
     super(arguments...)
 
-    @disable()
     @unblur()
 
   blur: -> @effect_on(@effects.blur)
@@ -27,18 +26,12 @@ module.exports = class App.LoginForm extends Spine.Controller
   effect_on: (class_name) ->
     @disable()
     @el.addClass(class_name)
-    # TODO
-    #@app.$("main").animate({ height: "120" }, { duration: "600" })
 
   effect_off: (class_name) ->
     @enable()
-    @app.timeout 100, => @el.removeClass(class_name)
-    # TODO
-    #@app.$("main").animate({ height: "300" }, { duration: "600" })
+    @el.removeClass(class_name)
 
   authenticate: ->
-    console.log("Start authenticate")
+    @blur()
+    if typeof(@callback) == "function" then @callback()
 
-    @effect_on(@effects.blur)
-
-    lightdm.authenticate()
