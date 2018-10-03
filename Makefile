@@ -14,7 +14,7 @@ build::
 	$(WEBPACK) --progress -p
 
 watch::
-	$(WEBPACK) --watch -p
+	$(WEBPACK) --watch
 
 deps::
 	yarn
