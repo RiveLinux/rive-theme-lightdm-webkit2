@@ -3,9 +3,9 @@ module.exports = class App.LogoChannel extends Spine.Controller
   constructor: ->
     super(arguments...)
 
-    @el = @parent.el.find("img[data-channel=#{@channel}]")
+    @el = @parent.el.find("img[data-channel=#{@name}]")
 
-    @el.attr("src", "#{@path}-#{@channel}.png")
+    @el.attr("src", "#{@path}-#{@name}.png")
 
     @position = new App.Vector(x: @parent.position.x, y: @parent.position.y)
     @velocity = new App.Vector
