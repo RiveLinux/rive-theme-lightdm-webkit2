@@ -1,5 +1,6 @@
 # TODO
 
+* Store options in local storage
 * Power and suspend options, messagebox/feedback, auth
 * Configs
   * /etc/lightdm/lightdm-webkit2-greeter.conf
