@@ -5,19 +5,18 @@ module.exports = class App.Logo extends Spine.Controller
     medium: 5
     large:  10
 
+  channel_names: ['red', 'green', 'blue', 'white']
+
   constructor: ->
     super(arguments...)
 
     @position ||= new App.Vector(x: 10, y: 10)
+    @channels   = []
 
-    @channels = [
-      new App.LogoChannel(parent: @, path: @path, channel: "red"),
-      new App.LogoChannel(parent: @, path: @path, channel: "green"),
-      new App.LogoChannel(parent: @, path: @path, channel: "blue"),
-      new App.LogoChannel(parent: @, path: @path, channel: "white"),
-    ]
-
-    channel.position.set(@position) for channel in @channels
+    for name in @channel_names
+      channel = new App.LogoChannel(parent: @, path: @path, name: name)
+      channel.position.set(@position)
+      @channels.push(channel)
 
     # TODO: This shouldnt be here
     $('body').click => @shake(@scale.medium)
